@@ -1,1 +1,1 @@
-Initial commit with README.md
+This is the README.txt file for the final project
