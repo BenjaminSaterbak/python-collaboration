@@ -22,13 +22,22 @@ Please Choose an action below:
             view_tasks(database)
         elif userinput == 3:
             task = input("What task would you like to mark as complete?: ")
+            mark_complete(database,databasec,task)
+            print("Your list of completed tasks is:")
+            print(databasec)
+        elif userinput == 4:
+            task = input("What task would you like to delete?: ")
+            task_delete(database,task)
+            print("Remaining tasks:")
+            print(database)
 
 
 
 
-def initialize_database():
+def initialize_databases():
     database = set({})
-    return database
+    databasec = set({})
+    return database,databasec
 
 def add_task(database,task):
     database.add(task)
@@ -36,15 +45,24 @@ def add_task(database,task):
 def view_tasks(database):
     print(database)
 
-def mark_complete(databse,task):
+def mark_complete(database,databasec,task):
     if task in database:
         database.remove(task)
+        databasec.add(task)
+        
+    else:
+        print("Your task was not found")
+
+def task_delete(database,task):
+    if task in database:
+        database.remove(task)
+
     else:
         print("Your task was not found")
     
     
 
-database = initialize_database()
+database,databasec = initialize_databases()
 
 while True:
     main()
